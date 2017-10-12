@@ -18,5 +18,17 @@
         {
             return Value * value;
         }
+
+        public override bool Equals(object obj)
+        {
+            var quantity = obj as Quantity;
+            return quantity != null &&
+                   Value == quantity.Value;
+        }
+
+        public override int GetHashCode()
+        {
+            return -1937169414 + Value.GetHashCode();
+        }
     }
 }
