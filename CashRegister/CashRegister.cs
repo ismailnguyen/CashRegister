@@ -2,9 +2,11 @@
 {
     public class CashRegister
     {
-        public double Total(double price, double quantity)
+        public Price Total(Price price, double quantity)
         {
-            return price * quantity;
+            var total = price.Value * quantity;
+
+            return new Price(total);
         }
     }
 }
