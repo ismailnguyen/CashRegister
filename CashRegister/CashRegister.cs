@@ -6,7 +6,7 @@
         {
             var total = price.Value * quantity;
 
-            return new Price(total);
+            return Price.Of(total);
         }
     }
 }

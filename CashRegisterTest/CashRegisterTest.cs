@@ -11,12 +11,12 @@ namespace KataCashRegisterTest
         {
             var cashRegister = new CashRegister();
 
-            var price = new Price(1.20);
+            var price = Price.Of(1.20);
             double quantity = 1;
 
             var total = cashRegister.Total(price, quantity);
 
-            Check.That(total).IsEqualTo(new Price(1.20));
+            Check.That(total).IsEqualTo(Price.Of(1.20));
         }
     }
 }

@@ -1,10 +1,10 @@
 ﻿namespace KataCashRegister
 {
-    public sealed class Price
+    public class Price
     {
         public double Value { get;  }
 
-        public Price(double value)
+        private Price(double value)
         {
             Value = value;
         }
@@ -19,6 +19,11 @@
         public override int GetHashCode()
         {
             return -1937169414 + Value.GetHashCode();
+        }
+
+        public static Price Of(double value)
+        {
+            return new Price(value);
         }
     }
 }
