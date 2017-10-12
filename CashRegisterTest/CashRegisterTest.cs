@@ -12,7 +12,7 @@ namespace KataCashRegisterTest
             var cashRegister = new CashRegister();
 
             var price = Price.ValueOf(1.20);
-            double quantity = 1;
+            var quantity = Quantity.ValueOf(1);
 
             var total = cashRegister.Total(price, quantity);
 

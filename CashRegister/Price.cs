@@ -2,7 +2,7 @@
 {
     public class Price
     {
-        public double Value { get;  }
+        private readonly double Value;
 
         private Price(double value)
         {
@@ -14,9 +14,9 @@
             return new Price(value);
         }
 
-        public Price MultiplyBy(double quantity)
+        public Price MultiplyBy(Quantity quantity)
         {
-            var total = Value * quantity;
+            var total = quantity.MultiplyBy(Value);
 
             return ValueOf(total);
         }
