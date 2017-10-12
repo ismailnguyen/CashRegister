@@ -14,7 +14,7 @@ namespace KataCashRegister
 
         public Price FindPrice(string itemCode)
         {
-            var itemReference = itemReferences.Where(item => item.CodeMatchWith(itemCode))?.FirstOrDefault();
+            var itemReference = itemReferences.FirstOrDefault(item => item.CodeMatchWith(itemCode));
 
             return itemReference?.GetPrice();
         }
