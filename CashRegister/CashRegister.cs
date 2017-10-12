@@ -4,9 +4,7 @@
     {
         public Price Total(Price price, double quantity)
         {
-            var total = price.Value * quantity;
-
-            return Price.Of(total);
+            return price.MultiplyBy(quantity);
         }
     }
 }

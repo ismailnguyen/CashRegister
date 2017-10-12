@@ -9,6 +9,18 @@
             Value = value;
         }
 
+        public static Price ValueOf(double value)
+        {
+            return new Price(value);
+        }
+
+        public Price MultiplyBy(double quantity)
+        {
+            var total = Value * quantity;
+
+            return ValueOf(total);
+        }
+
         public override bool Equals(object obj)
         {
             var price = obj as Price;
@@ -19,11 +31,6 @@
         public override int GetHashCode()
         {
             return -1937169414 + Value.GetHashCode();
-        }
-
-        public static Price Of(double value)
-        {
-            return new Price(value);
         }
     }
 }
