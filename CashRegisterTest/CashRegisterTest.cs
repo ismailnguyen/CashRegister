@@ -5,12 +5,13 @@ namespace KataCashRegister
 {
     public class CashRegisterTest
     {
-        CashRegister cashRegister;
+        CashRegister CashRegister;
         PriceQuery PriceQuery;
 
         [SetUp]
         public void init()
         {
+            CashRegister = new CashRegister();
             PriceQuery = new PriceQuery(
                 ItemReference.AReference().WithItemCode("APPLE").WithUnitPrice(1.20).Build(),
                 ItemReference.AReference().WithItemCode("BANANA").WithUnitPrice(1.90).Build()
@@ -23,7 +24,7 @@ namespace KataCashRegister
             var price = Price.ValueOf(1.20);
             var quantity = Quantity.ValueOf(1);
 
-            var total = cashRegister.Total(price, quantity);
+            var total = CashRegister.Total(price, quantity);
 
             Check.That(total).IsEqualTo(Price.ValueOf(1.20));
         }

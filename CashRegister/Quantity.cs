@@ -9,7 +9,7 @@
             Value = value;
         }
 
-        public static Quantity ValueOf(int value)
+        public static Quantity ValueOf(double value)
         {
             return new Quantity(value);
         }
