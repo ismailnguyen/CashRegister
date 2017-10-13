@@ -5,6 +5,7 @@ namespace KataCashRegister
 {
     public class CashRegisterTest
     {
+        CashRegister cashRegister;
         PriceQuery PriceQuery;
 
         [SetUp]
@@ -19,8 +20,6 @@ namespace KataCashRegister
         [Test]
         public void Total_Should_Calcul_Total_Price()
         {
-            var cashRegister = new CashRegister();
-
             var price = Price.ValueOf(1.20);
             var quantity = Quantity.ValueOf(1);
 
@@ -40,6 +39,14 @@ namespace KataCashRegister
         public void Search_An_Unknown_Item()
         {
             Check.That(PriceQuery.FindPrice("PEACH")).IsNull();
+        }
+
+        [TestCase("APPLE", 1, 1.20)]
+        [TestCase("APPLE", 2, 1.20)]
+        [TestCase("BANANA", 10, 1.90)]
+        public void Total_Is_Product_Of_Quantity_By_Item_Price_Corresponding_To_Existing_Item(string itemCode, double quantity, double unitPrice)
+        {
+            Result total = cashRegister.Total(PriceQuery.FindPrice(itemCode), Quantity.ValueOf(quantity));
         }
     }
 }
