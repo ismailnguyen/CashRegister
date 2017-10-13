@@ -41,12 +41,14 @@ namespace KataCashRegister
             Check.That(PriceQuery.FindPrice("PEACH")).IsNull();
         }
 
-        [TestCase("APPLE", 1, 1.20)]
-        [TestCase("APPLE", 2, 1.20)]
-        [TestCase("BANANA", 10, 1.90)]
-        public void Total_Is_Product_Of_Quantity_By_Item_Price_Corresponding_To_Existing_Item(string itemCode, double quantity, double unitPrice)
-        {
-            Result total = cashRegister.Total(PriceQuery.FindPrice(itemCode), Quantity.ValueOf(quantity));
-        }
+        //[TestCase("APPLE", 1, 1.20)]
+        //[TestCase("APPLE", 2, 1.20)]
+        //[TestCase("BANANA", 10, 1.90)]
+        //public void Total_Is_Product_Of_Quantity_By_Item_Price_Corresponding_To_Existing_Item(string itemCode, double quantity, double unitPrice)
+        //{
+        //    var total = cashRegister.Total(PriceQuery.FindPrice(itemCode), Quantity.ValueOf(quantity));
+
+        //    Check.That(total).IsEqualTo
+        //}
     }
 }
