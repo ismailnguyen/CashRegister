@@ -1,4 +1,4 @@
-# CashRegister
+# Cash Register Kata
 
 Value Object, Immuatability, Static fabrics, Tell don't ask, Kata, TDD, C#
 
