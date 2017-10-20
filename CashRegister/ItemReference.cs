@@ -52,8 +52,6 @@ namespace KataCashRegister
             private string itemCode;
             private double unitPrice;
 
-            
-
             public Builder WithItemCode(string itemCode)
             {
                 this.itemCode = itemCode;
