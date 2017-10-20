@@ -9,7 +9,7 @@ namespace KataCashRegister
         PriceQuery PriceQuery;
 
         [SetUp]
-        public void init()
+        public void InitTests()
         {
             CashRegister = new CashRegister();
             PriceQuery = new PriceQuery(
@@ -33,23 +33,13 @@ namespace KataCashRegister
         [TestCase("BANANA", 1.90)]
         public void Find_The_Price_Given_An_Item_Code(string itemCode, double unitPrice)
         {
-            Check.That(PriceQuery.FindPrice(itemCode)).IsEqualTo(Price.ValueOf(unitPrice));
+            Check.That(PriceQuery.FindPrice(itemCode)).IsEqualTo(Result.Found(Price.ValueOf(unitPrice)));
         }
 
         [Test]
         public void Search_An_Unknown_Item()
         {
-            Check.That(PriceQuery.FindPrice("PEACH")).IsNull();
+            Check.That(PriceQuery.FindPrice("PEACH")).IsEqualTo(Result.NotFound("PEACH"));
         }
-
-        //[TestCase("APPLE", 1, 1.20)]
-        //[TestCase("APPLE", 2, 1.20)]
-        //[TestCase("BANANA", 10, 1.90)]
-        //public void Total_Is_Product_Of_Quantity_By_Item_Price_Corresponding_To_Existing_Item(string itemCode, double quantity, double unitPrice)
-        //{
-        //    var total = cashRegister.Total(PriceQuery.FindPrice(itemCode), Quantity.ValueOf(quantity));
-
-        //    Check.That(total).IsEqualTo
-        //}
     }
 }

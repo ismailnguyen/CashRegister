@@ -12,11 +12,18 @@ namespace KataCashRegister
             this.itemReferences = itemReferences;
         }
 
-        public Price FindPrice(string itemCode)
+        public Result FindPrice(string itemCode)
         {
             var itemReference = itemReferences?.FirstOrDefault(item => item.CodeMatchWith(itemCode));
 
-            return itemReference?.GetPrice();
+            var price = itemReference?.GetPrice();
+
+            if (price == null)
+            {
+                return Result.NotFound(itemCode);
+            }
+
+            return Result.Found(price);
         }
     }
 }

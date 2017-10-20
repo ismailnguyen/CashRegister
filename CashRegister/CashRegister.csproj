@@ -46,6 +46,7 @@
     <Compile Include="PriceQuery.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Quantity.cs" />
+    <Compile Include="Result.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
