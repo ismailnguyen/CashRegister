@@ -41,5 +41,23 @@ namespace KataCashRegister
         {
             Check.That(PriceQuery.FindPrice("PEACH")).IsEqualTo(Result.NotFound("PEACH"));
         }
+
+        [TestCase("APPLE", 1, 1.20)]
+        [TestCase("APPLE", 2, 1.20)]
+        [TestCase("BANANA", 10, 1.90)]
+        public void Total_Is_Product_Of_Quantity_By_Item_Price_Corresponding_To_Existing_Item_Code(string itemCode, double quantity, double unitPrice)
+        {
+            Result total = CashRegister.Total(PriceQuery.FindPrice(itemCode), Quantity.ValueOf(quantity));
+
+            Check.That(total).IsEqualTo(Result.Found(Price.ValueOf(quantity * unitPrice)));
+        }
+
+        [Test]
+        public void Total_Not_Found_When_Item_Price_Not_Found()
+        {
+            Result total = CashRegister.Total(PriceQuery.FindPrice("PEACH"), Quantity.ValueOf(1));
+
+            Check.That(total).IsEqualTo(Result.NotFound("PEACH"));
+        }
     }
 }

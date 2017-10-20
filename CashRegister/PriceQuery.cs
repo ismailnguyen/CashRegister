@@ -9,12 +9,12 @@ namespace KataCashRegister
 
         public PriceQuery(params ItemReference[] itemReferences)
         {
-            this.itemReferences = itemReferences;
+            this.itemReferences = itemReferences ?? new ItemReference[0];
         }
 
         public Result FindPrice(string itemCode)
         {
-            var itemReference = itemReferences?.FirstOrDefault(item => item.CodeMatchWith(itemCode));
+            var itemReference = itemReferences.FirstOrDefault(item => item.CodeMatchWith(itemCode));
 
             var price = itemReference?.GetPrice();
 

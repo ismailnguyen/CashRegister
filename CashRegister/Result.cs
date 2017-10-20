@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace KataCashRegister
 {
@@ -13,6 +14,8 @@ namespace KataCashRegister
         {
             return new NotFoundResult(invalidItemCode);
         }
+
+        public abstract Result Map(Func<Price, Price> mapFunction);
 
         private class FoundResult : Result
         {
@@ -33,6 +36,11 @@ namespace KataCashRegister
             public override int GetHashCode()
             {
                 return -2116549190 + EqualityComparer<Price>.Default.GetHashCode(price);
+            }
+
+            public override Result Map(Func<Price, Price> mapFunction)
+            {
+                return Found(mapFunction(price));
             }
         }
 
@@ -55,6 +63,11 @@ namespace KataCashRegister
             public override int GetHashCode()
             {
                 return -706475330 + EqualityComparer<string>.Default.GetHashCode(invalidItemCode);
+            }
+
+            public override Result Map(Func<Price, Price> mapFunction)
+            {
+                return this;
             }
         }
     }
